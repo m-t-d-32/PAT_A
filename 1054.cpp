@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
 		}	
 	}
 
-	//输出最终的假设众数，它一定是要求的众数
+	//输出最终的当前众数，它一定是要求的众数
 	printf("%d\n", max);
 	return 0;
 }
