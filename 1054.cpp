@@ -28,14 +28,13 @@ int main(int argc, char const *argv[])
 	//原理是依据题目假设：众数一定出现次数多于一半
 	//引入某个数的净出现次数：这个数出现一次，净出现次数+1，否则-1
 	//因此得出结论：要求众数净出现次数一定大于0
-	
+
 	int m, n;
 	scanf("%d%d", &m, &n);
-	int * colors = new int[m * n];	//申请内存
 
 	//counter是从当前众数成为众数开始，当前众数的净出现次数
 	//max是当前众数
-	int counter = 1, max = -1;	
+	int counter = 1, max = -1;
 	for (int i = 0; i < m * n; ++i){
 		int temp;
 		scanf("%d", &temp);	//读取下一个数
@@ -44,7 +43,7 @@ int main(int argc, char const *argv[])
 		}
 		else {
 			--counter;	//如果当前众数没有出现，则净出现次数-1
-			if (counter <= 0){	
+			if (counter <= 0){
 				//如果到目前为止当前众数的净出现次数不再大于0
 				//则表明从0到现在为止的这些数，当前众数不是要求众数
 				//只有可能是刚刚出现的数是要求众数
@@ -53,7 +52,7 @@ int main(int argc, char const *argv[])
 				counter = 1;
 				max = temp;
 			}
-		}	
+		}
 	}
 
 	//输出最终的当前众数，它一定是要求的众数
