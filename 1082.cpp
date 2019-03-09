@@ -24,25 +24,29 @@
 #include <string>
 using namespace std;
 
+//每一位的汉语拼音
+string chn_nums[] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
+//千、百、十的汉语拼音
+string middle_nums[] = {"Qian", "Bai", "Shi"};
+//输入的数字字符串
+char * num_str;
+//顺序保存的结果字符串序列
 vector<string> results;
 
-string chn_nums[] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
-string middle_nums[] = {"Qian", "Bai", "Shi"};
-char * num_str;
-bool * zeros;
-
 void read(int begin, int end){	
-	//输出num_str数组中begin到end位（可能为负数）
+	//将num_str数组中begin到end位（可能为负数）的汉语拼音结果保存在全局序列中	
 	for (int i = begin; i < end; ++i){
-		//必须i不是负数才可能输出
+		//必须i不是负数才可能保存这一位的拼音
 		if (i >= 0 && num_str[i] != '0'){
-			//如果i的上一位存在且是0，且这一位不是0，则输出0
+			//如果这一位不是0，再执行操作
+			//（0过后再保存，或者可能不保存）
 			if (i > 0 && num_str[i - 1] == '0'){
+				//如果i的上一位存在且是0，则多保存一个0的拼音
 				results.push_back(chn_nums[0]);
 			}
-			//输出这一位
+			//保存这一位的拼音
 			results.push_back(chn_nums[num_str[i] - '0']);
-			//输出千、百、十
+			//保存这一位对应千、百、十的拼音
 			if (i - begin < sizeof(middle_nums) / sizeof(string)){
 				results.push_back(middle_nums[i - begin]);
 			}
@@ -74,7 +78,7 @@ int main(int argc, char const *argv[])
 	//保存[4, 0)位，即个量级
 	read(max_len - 4, max_len);
 	
-	//输出结果
+	//顺序输出保存的结果序列
 	if (results.size()){
 		for (int i = 0; i < results.size() - 1; ++i){
 			printf("%s ", results[i].c_str());
