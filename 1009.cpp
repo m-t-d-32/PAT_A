@@ -121,9 +121,9 @@ int main(){
     printf("%d ", final_result.size());
     if (final_result.size() > 1){
         for (int i = 0; i < final_result.size() - 1; ++i){
-            printf("%d %.1lf ", final_result[i].radix, final_result[i].base);
+            printf("%d %.1f ", final_result[i].radix, final_result[i].base);
         }
     }
-    printf("%d %.1lf", final_result.back().radix, final_result.back().base);
+    printf("%d %.1f", final_result.back().radix, final_result.back().base);
     return 0;
 }
