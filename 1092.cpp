@@ -33,9 +33,11 @@ using namespace std;
 int main(){
     //输入
     char src[1005], dest[1005];
-    //确定源字符串和目标字符串的大小（避免重复计算）
     scanf("%s %s", src, dest);
+
+    //确定源字符串和目标字符串的大小（避免重复计算）
     int src_count = strlen(src), dest_count = strlen(dest);
+
     //统计源字符串和目标字符串中每个字符出现的次数
     map<char, int> src_set, dest_set;
     for (int i = 0; i < src_count; ++i){
@@ -43,15 +45,18 @@ int main(){
     }
     for (int i = 0; i < dest_count; ++i){
         ++dest_set[dest[i]]; 
-    }
-    int missing = 0;
+    }    
+
     //如果目标字符串中某个字符出现的次数多于源字符串中这个字符出现的次数
     //增加missing的数量，用于最后输出总共少几个字符
+    int missing = 0;
     for (map<char, int>::iterator it = dest_set.begin(); it != dest_set.end(); ++it){
         if (it->second > src_set[it->first]){
             missing += (it->second - src_set[it->first]);
         }
     }
+
+    //输出
     if (missing){
         //如果缺少字符，则输出No
         printf("No %d\n", missing);
