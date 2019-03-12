@@ -27,7 +27,7 @@ int main(){
     //定义P的个数，PA的个数和PAT的个数（最终结果）
     long long p = 0, pa = 0, pat = 0;
     for (int i = 0; str[i] != '\0'; ++i){
-        //遍历字符串的美国一个字符
+        //遍历字符串的每一个字符
         switch(str[i]){
             case 'P': {
                 //如果多了一个P
